@@ -1,11 +1,11 @@
 # https://dmoj.ca/problem/wc18c3j1
-paint_litres = int(input())
-litre_per_cap = int(input())
-cap_to_pokedollar = int(input())
+paint = int(input())
+paint_per_cap = int(input())
+dollars_per_cap = int(input())
 
-caps_produced = paint_litres//litre_per_cap
-paint_litres = paint_litres - (caps_produced * litre_per_cap)
+caps_produced = paint//paint_per_cap
+paint = paint - (caps_produced * paint_per_cap)
 
-total = (caps_produced * cap_to_pokedollar) + paint_litres
+total = (caps_produced * dollars_per_cap) + paint
 
 print(total)
