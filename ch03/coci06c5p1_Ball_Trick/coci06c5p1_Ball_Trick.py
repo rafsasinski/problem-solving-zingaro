@@ -3,22 +3,13 @@
 movement = input()
 bloc = 0
 
-for move in movement:
+trans = {
+        'A': {0: 1, 1: 0, 2: 2},
+        'B': {0: 0, 1: 2, 2: 1},
+        'C': {0: 2, 1: 1, 2: 0}
+        }
 
-    if move == 'A':
-        if bloc == 0:
-            bloc = 1
-        elif bloc == 1:
-            bloc = 0
-    elif move == 'B':
-        if bloc == 1:
-            bloc = 2
-        elif bloc == 2:
-            bloc = 1
-    elif move == 'C':
-        if bloc == 0:
-            bloc = 2
-        elif bloc == 2:
-            bloc = 0
+for move in movement:
+    bloc = trans[move][bloc]
 
 print(bloc + 1)
