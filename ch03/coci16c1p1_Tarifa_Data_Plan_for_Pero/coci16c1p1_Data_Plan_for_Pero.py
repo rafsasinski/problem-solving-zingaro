@@ -2,11 +2,10 @@
 
 DATA_PLAN = int(input())
 months = int(input())
-carry = []
 next_month = DATA_PLAN
 
-for month in range(0, months):
-    carry.append(DATA_PLAN - int(input()))
-    next_month = next_month +  carry[month]
+for _ in range(0, months):
+    carry = DATA_PLAN - int(input())
+    next_month = next_month + carry
 
 print(next_month)
