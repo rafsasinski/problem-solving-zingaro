@@ -1,7 +1,6 @@
 # https://dmoj.ca/problem/coci12c5p1_Ljestvica_music_scale_detect
 
 measures = input()
-measures = measures.split("|")
 
 main_tones_a_minor = ("A", "D", "E")
 main_tones_c_major = ("C", "F", "G")
@@ -9,18 +8,19 @@ main_tones_c_major = ("C", "F", "G")
 a_minor_count = 0
 c_major_count = 0
 
-for measure in measures:
-    note = measure[0]
+for i in range(len(measures)):
+    note = measures[i]
 
-    if note in main_tones_a_minor:
-        a_minor_count = a_minor_count + 1
+    if i == 0 or measures[i - 1] == '|':
+        if note in main_tones_a_minor:
+            a_minor_count = a_minor_count + 1
 
-    if note in main_tones_c_major:
-        c_major_count = c_major_count + 1
+        if note in main_tones_c_major:
+            c_major_count = c_major_count + 1
 
 
 if a_minor_count == c_major_count:
-    if measures[-1][-1] == 'A':
+    if measures[-1] == 'A':
         a_minor_count = a_minor_count + 1
     else:
         c_major_count = c_major_count + 1
