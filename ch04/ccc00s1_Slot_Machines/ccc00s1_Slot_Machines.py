@@ -15,7 +15,6 @@ total_plays = 0
 
 while wallet > 0:
     wallet = wallet - play_cost
-    total_plays = total_plays + 1
 
     # Got stuck on an OFF-BY-ONE: this turn can already be the winning one (hence the -1)
     if turns_since_payout[current_machine] >= payout_interval[current_machine]-1:
@@ -24,10 +23,8 @@ while wallet > 0:
     else:
         turns_since_payout[current_machine] = turns_since_payout[current_machine] + 1
 
-    if current_machine < len(turns_since_payout)-1:
-        current_machine = current_machine + 1
-    else:
-        current_machine = 0
+    total_plays = total_plays + 1
+    current_machine = total_plays % len(turns_since_payout)
 
 
 print(f"Martha plays {total_plays} times before going broke.")
