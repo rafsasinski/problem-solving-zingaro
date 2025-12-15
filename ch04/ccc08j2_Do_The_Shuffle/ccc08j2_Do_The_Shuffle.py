@@ -19,23 +19,19 @@ OUTPUT:
     B C D A E
 '''
 
-playlist = ['A', 'B', 'C', 'D', 'E']
+playlist = 'ABCDE'
 button = 0
-press_times = 0
 
 while button != 4:
     button = int(input())
-    press_times = int(input())
+    presses = int(input())
 
-    for i in range(press_times):
+    for i in range(presses):
         if button == 1:
-            elm = playlist.pop(0)
-            playlist.append(elm)
+            playlist = playlist[1:] + playlist[0]
         elif button == 2:
-            elm = playlist.pop()
-            playlist.insert(0, elm)
+            playlist = playlist[-1] + playlist[0:-1]
         elif button == 3:
-            elm = playlist.pop(1)
-            playlist.insert(0, elm)
+            playlist = playlist[1] + playlist[0] + playlist[2:]
 
 print(' '.join(playlist))
