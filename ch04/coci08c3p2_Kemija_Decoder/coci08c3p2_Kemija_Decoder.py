@@ -7,12 +7,11 @@ i = 0
 while i < len(encoded):
     ch = encoded[i]
 
-    if ch in 'aeiou' and encoded[i+1] == "p" and encoded[i+2] == ch:
-        decoded = decoded + ch
+    if ch in 'aeiou':
         i = i + 3
     else:
-        decoded = decoded + ch
         i = i + 1
 
+    decoded = decoded + ch
 
 print(decoded)
