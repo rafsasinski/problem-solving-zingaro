@@ -29,27 +29,20 @@ late = 0
 line = 0
 
 activity = ''
-memory = []
 
 while activity != 'EOF':
     activity = input()
 
     if activity == 'CLOSE':
-        memory.append(f"{late} {line} {number}")
+        print(f"{late} {line} {number}")
         late = 0
         line = 0
-
-    if activity == 'TAKE':
+    elif activity == 'TAKE':
         # (0 < number < 1000)
         if number == MAX_NUMBER:
             number = 0
-
         number = number + 1
         late = late + 1
         line = line + 1
-
-    if activity == 'SERVE':
+    elif activity == 'SERVE':
         line = line - 1
-
-for mem in memory:
-    print(mem)
