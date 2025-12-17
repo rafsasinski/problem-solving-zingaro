@@ -1,30 +1,31 @@
 # https://dmoj.ca/problem/coci08c1p2
 '''
 INPUT
-    - Number of questions N (1<=N<=100
+    - Number of questions N (1<=N<=100)
     - String of N letters containing answers
 '''
 
-adrian_sequence  = "ABC"
+ADRIAN          = "ABC"
 adrian_score    = 0
-bruno_sequence  = "BABC"
+BRUNO           = "BABC"
 bruno_score     = 0
-goran_sequence  = "CCAABB"
+GORAN           = "CCAABB"
 goran_score     = 0
 
 questions = int(input())
 exam = input()
 
+
 for i in range(questions):
     answer = exam[i]
     
-    if answer == adrian_sequence[i%len(adrian_sequence)]:
+    if answer == ADRIAN[i % len(ADRIAN)]:
         adrian_score = adrian_score + 1
 
-    if answer == bruno_sequence[i%len(bruno_sequence)]:
+    if answer == BRUNO[i % len(BRUNO)]:
         bruno_score = bruno_score + 1
 
-    if answer == goran_sequence[i%len(goran_sequence)]:
+    if answer == GORAN[i % len(GORAN)]:
         goran_score = goran_score + 1
 
 
