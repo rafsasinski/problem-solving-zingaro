@@ -1,9 +1,5 @@
 # https://dmoj.ca/problem/ecoo15r1p1
 
-'''
-No thappy about this one, but it gives the right answer
-'''
-
 for dataset in range(10):
     hand = {
             "red"	    : 0,
@@ -17,28 +13,19 @@ for dataset in range(10):
             }
 
     total_time = 0
-    treshold = 7
     smartie = ""
 
-    while True:
+    while smartie != "end of box" :
         smartie = input()
 
-        if smartie == "red":
-            total_time = total_time + 16
-            continue
-
-        if smartie == "end of box":
-            treshold = 1
-
-        if smartie in hand:
+        if smartie != "end of box":
             hand[smartie] = hand[smartie] + 1
 
-        for s in hand:
-            if hand[s] >= treshold:
-                hand[s] = 0
-                total_time = total_time + 13
-
-        if treshold == 1:
-            break
+    for s in hand:
+        if s == "red":
+            total_time = total_time + (hand[s] * 16)
+        else:
+            hand_of_smarties = (hand[s] + 6) // 7
+            total_time = total_time + hand_of_smarties * 13
 
     print(total_time)
