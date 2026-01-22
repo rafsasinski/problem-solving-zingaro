@@ -30,42 +30,27 @@ RM = 16
 
 '''
 
-max_village = 0
-min_village = 0
 total_villages = int(input())
 villages = []
-neighbours = []
 
 for i in range(total_villages):
-    candidate = int(input())
+    villages.append(int(input()))
     
-    if i == 0:
-        max_village = candidate
-        min_village = candidate
-    
-    if candidate < min_village:
-        min_village = candidate
-    elif candidate > max_village:
-        max_village = candidate
 
-    villages.append(candidate)
+villages.sort()
+
+# +Infinity float
+min_neighborhood = float('inf')
 
 
-for village in villages:
-    if village == max_village or village == min_village:
-        continue
+for i in range(1, len(villages) - 1):
+    left    = (villages[i] - villages[i-1]) / 2
+    right   = (villages[i+1] - villages[i]) / 2
+    size = left + right
 
-    left    = min_village
-    right   = max_village
+    if size < min_neighborhood:
+        min_neighborhood = size
 
-    for candidate in villages:
-        # left
-        if candidate > left and candidate < village:
-            left = candidate
-        if candidate < right and candidate > village:
-            right = candidate
 
-    size = ((village - left) / 2) + ((right - village) / 2)
-    neighbours.append(size)
-
-print(min(neighbours))
+# enforce the correct notation
+print(f"{min_neighborhood:.1f}")
