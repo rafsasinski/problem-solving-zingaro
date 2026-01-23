@@ -34,14 +34,10 @@ for dataset in range(10):
 
     # Missing (+int) or Extra (-int) person
     missing = total_students - sum(attendees)
-
     if missing > 0:
-        highest_index = 0
-        for i in range(1, len(attendance_percentages)):
-            if attendance_percentages[i] > attendance_percentages[i-1]:
-                highest_index = i
-        
-        attendees[highest_index] += missing
+        most_attendees = max(attendees)
+        index_most = attendees.index(most_attendees)
+        attendees[index_most] += missing
 
     total_proceeds = 0
     for i in range(len(attendees)):
