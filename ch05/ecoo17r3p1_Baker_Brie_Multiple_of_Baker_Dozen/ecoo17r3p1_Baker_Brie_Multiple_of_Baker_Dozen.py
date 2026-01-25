@@ -17,8 +17,7 @@ for _ in range(10):
     across_shops = []
     across_days = []
 
-    if len(across_days) != shops:
-        across_days = [0] * shops
+    across_days = [0] * shops
 
     for i in range(days):
         row = [int(r) for r in input().split()]
