@@ -5,31 +5,29 @@ INPUT:
         F - integer (4 <= F <= 130),  Number of ranchises (columns)
         D - integer (2 <= D <= 4745), Number of days (rows)
     Dn - lines where (Fi, Dj) - number of baked goods
+EXAMPLE:
+    4 2
+    4 4 4 1
+    1 1 3 4
 '''
 
 
 for _ in range(10):
     shops, days = map(int, input().split())
-    dataset = []
     across_shops = []
     across_days = []
 
+    if len(across_days) != shops:
+        across_days = [0] * shops
+
     for i in range(days):
-        # row = map(int, input().split())
-        row = input().split()
-        row = [int(r) for r in row]
+        row = [int(r) for r in input().split()]
+
         across_shops.append(sum(row))
 
-        # dataset.append([int(x) for x in input().split()])
-        if len(row) != len(across_days):
-            across_days = [0 for _ in row]
-
-        for j in range(len(row)):
+        for j in range(shops):
             across_days[j] += row[j]
 
-
-    # print(f"across D: {across_days}")
-    # print(f"across S: {across_shops}")
 
     across_days = [int(d / 13) if not d % 13 else 0 for d in across_days]
     across_shops = [int(d / 13) if not d % 13 else 0 for d in across_shops]
