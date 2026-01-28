@@ -18,10 +18,7 @@ while line != "77":
         flows.insert(stream+1, round(stream_value * (100-percentage)/100))
     elif line == "88":
         # JOIN
-        if stream == 0:
-            flows = [flows[0] + flows[1]] + flows[2:]
-        else:
-            flows = flows[0:stream] + [flows[stream] + flows[stream+1]] + flows[stream+2:]
+        flows = flows[0:stream] + [flows[stream] + flows[stream+1]] + flows[stream+2:]
 
     line = input()
 
