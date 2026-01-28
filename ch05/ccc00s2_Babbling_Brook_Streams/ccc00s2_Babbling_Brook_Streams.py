@@ -21,8 +21,8 @@ while line != "77":
         if stream == 0:
             flows = [flows[0] + flows[1]] + flows[2:]
         else:
-            flows = flows[0:stream] + [flows[stream] + flows[stream+1]]
-    
+            flows = flows[0:stream] + [flows[stream] + flows[stream+1]] + flows[stream+2:]
+
     line = input()
 
 print(" ".join([str(val) for val in flows]))
