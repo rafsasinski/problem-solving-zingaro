@@ -1,0 +1,4 @@
+RLLRLLLL
+2
+LL 2
+RL 2
