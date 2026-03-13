@@ -19,9 +19,9 @@ prev_delta = None
 
 for x in range(n_days):
     ch = changes[x]
+    curr_delta = CHANGE_TO_INT[ch]
 
     if x > 0:
-        curr_delta = CHANGE_TO_INT[ch]
         if curr_delta == -1 and prev_delta <= 0:
             y -= 1
         elif curr_delta >= 0 and prev_delta == 1:
@@ -41,7 +41,7 @@ for x in range(n_days):
         row = row[0:x] + CHANGE_TO_SYMBOL[ch] + row[x + 1:]
         rows[y + y_offset] = row
 
-    prev_delta = CHANGE_TO_INT[ch]
+    prev_delta = curr_delta
 
 for row in reversed(rows):
     print(row)
