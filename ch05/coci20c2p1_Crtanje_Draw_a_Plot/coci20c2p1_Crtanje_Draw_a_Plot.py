@@ -13,12 +13,11 @@ CHANGE_TO_SYMBOL = {
 }
 
 rows = []
-x = 0
 y = 0
 y_offset = 0
 prev_delta = None
-curr_delta = None
-while x < n_days:
+
+for x in range(n_days):
     ch = changes[x]
 
     if x > 0:
@@ -28,7 +27,7 @@ while x < n_days:
         elif curr_delta >= 0 and prev_delta == 1:
             y += 1
 
-    if len(rows) <= y + y_offset or len(rows) == 0:
+    if len(rows) <= y + y_offset:
         row = "." * n_days
         row = row[0:x] + CHANGE_TO_SYMBOL[ch] + row[x + 1:]
         rows.append(row)
@@ -42,15 +41,10 @@ while x < n_days:
         row = row[0:x] + CHANGE_TO_SYMBOL[ch] + row[x + 1:]
         rows[y + y_offset] = row
 
-
-
     prev_delta = CHANGE_TO_INT[ch]
-    x += 1
 
-lines = len(rows)
-while lines > 0:
-    print(rows[lines-1])
-    lines -= 1
+for row in reversed(rows):
+    print(row)
 
 '''
 -2: -1 -1 -- DOWN 
