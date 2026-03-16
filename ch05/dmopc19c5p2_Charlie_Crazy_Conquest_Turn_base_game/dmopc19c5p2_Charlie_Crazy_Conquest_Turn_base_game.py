@@ -24,9 +24,7 @@ while i < N and lowest_hp > 0:
 
     # Activate the move
     if move_type == "A":
-        if previous_move[0] == "D":
-            1+1
-        else:
+        if not previous_move[0] == "D":
             players_HP[player_id ^ 1] -= move_power
     elif move_type == "D":
         if previous_move[0] == "D":
