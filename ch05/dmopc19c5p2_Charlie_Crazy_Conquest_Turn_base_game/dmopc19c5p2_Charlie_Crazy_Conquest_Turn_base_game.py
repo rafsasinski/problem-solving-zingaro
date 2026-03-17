@@ -29,12 +29,6 @@ while i < N and min(players_HP) > 0:
         if previous_move and previous_move[0] == "D":
             players_HP[player_id ^ 1] -= previous_move[1]
 
-    # This might be the last round check for self harm
-    if i == N-1 and player_id == 1:
-        if move_type == "D":
-            players_HP[player_id] -= move_power
-
-
     # Prepare for next turn
     previous_move = move
     player_id += 1
@@ -42,6 +36,11 @@ while i < N and min(players_HP) > 0:
     if player_id > 1:
         i += 1
         player_id = 0
+
+# Check if the last move was D (Dodge), if yes then self harm
+last_move = players_move[1][N-1]
+if last_move[0] == "D":
+    players_HP[1] -= last_move[1]
 
 if players_HP[0] <= 0:
     print("DEFEAT")
