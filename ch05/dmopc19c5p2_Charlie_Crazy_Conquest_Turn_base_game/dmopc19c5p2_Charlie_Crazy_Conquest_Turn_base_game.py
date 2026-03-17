@@ -4,18 +4,17 @@ players_HP = [H, H]
 players_move = [[], []]
 
 for n in range(N*2):
-    line = [m if m in "AD" else int(m) for m in input().split()]
+    move_type, move_power = input().split()
     if n < N:
-        players_move[0].append(line)
+        players_move[0].append((move_type, int(move_power)))
     else:
-        players_move[1].append(line)
+        players_move[1].append((move_type, int(move_power)))
 
 i = 0
 player_id = 0
-lowest_hp = min(players_HP)
-previous_move = ["",0]
+previous_move = None # FALSE
 
-while i < N and lowest_hp > 0:
+while i < N and min(players_HP) > 0:
 
     # Select current move for player
     move = players_move[player_id][i]
@@ -24,10 +23,10 @@ while i < N and lowest_hp > 0:
 
     # Activate the move
     if move_type == "A":
-        if not previous_move[0] == "D":
+        if not previous_move or previous_move[0] != "D":
             players_HP[player_id ^ 1] -= move_power
     elif move_type == "D":
-        if previous_move[0] == "D":
+        if previous_move and previous_move[0] == "D":
             players_HP[player_id ^ 1] -= previous_move[1]
 
     # This might be the last round check for self harm
@@ -37,7 +36,6 @@ while i < N and lowest_hp > 0:
 
 
     # Prepare for next turn
-    lowest_hp = min(players_HP)
     previous_move = move
     player_id += 1
 
